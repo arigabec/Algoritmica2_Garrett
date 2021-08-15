@@ -1,41 +1,36 @@
-#include <bits/stdc++.h> 
+#include <bits/stdc++.h>
 using namespace std;
 int cont = 0;
 int nodeCount = 0;
 
 struct node {
-    char currentCharacter;       // 'a'
+    char currentCharacter;       
     bool isWord = false;
-    int number = 0;              // false 
-    struct node *children[27];  // sus nodos hijos  [null,null,null.....] 
+    int number = 0;             
+    struct node *children[27]; 
 }*trie; 
-
-// Inicializar 
 
 void init() {
     trie = new node();
 }
 
-void insertWord(string word) {   // alto 
+void insertWord(string word) {   
     node *currentNode =  trie;  
     for (int i = 0; i< word.length(); i++) {
-        int character = word[i] - 'a';       // i = 0 'a'-'a' = 0
+        int character = word[i] - 'a';      
         if(currentNode->children[character] == NULL ) {
             currentNode->children[character] = new node();
-            cont++;
         }
-        currentNode->number = currentNode->number+1;
-        cout << currentNode->number << endl;
         currentNode = currentNode->children[character];
         currentNode->currentCharacter = word[i];
     }
     currentNode->isWord = true;
 }
 
-bool searchWord(string word) {   // alto 
+bool searchWord(string word) {   
     node *currentNode =  trie;  
-    for (int i = 0; i< word.length(); i++) {
-        int character = word[i] - 'a';       // i = 0 'a'-'a' = 0
+    for (int i = 0; i < word.length(); i++) {
+        int character = word[i] - 'a';      
         if(currentNode->children[character] == NULL ) {
            return false;
         }
@@ -44,7 +39,27 @@ bool searchWord(string word) {   // alto
     return currentNode->isWord;
 }
 
-int findPrefix() {
+void isThereWord(string word) {
+    if(searchWord(word)) {
+        cout<<"Si existe : "<<word<<" en el trie :)"<<endl;
+    } else {
+        cout<<"No Existe :("<<endl;
+    }
+}
+
+bool trieDelete(string word){
+    if(searchWord(word)){
+        node *currentNode =  trie;
+        for(int i = 0; i < word.length(); i++){
+            int character = word[i] - 'a';
+            currentNode -> children[character];
+            currentNode = currentNode -> children[character];
+        }
+        currentNode->isWord = false;
+    }
+}
+
+/*int findPrefix() {
     node *currentNode =  trie;  
     for (int i = 0; i< cont; i++) {
         currentNode = currentNode->children[i];
@@ -55,8 +70,7 @@ int findPrefix() {
         currentNode = currentNode->children[i];
     }
     //return currentNode->countWords;
-}
-
+}*/
 
 /*int findWords(string prefix) {   // alto 
     node *currentNode =  trie;  
@@ -70,7 +84,6 @@ int findPrefix() {
     return currentNode->countWords;
 }*/
 
-
 /*void showTrie(node currentNode ) {
     node *currentNode =  trie;  
     for (int i =0; i< 27; i++) {
@@ -78,37 +91,19 @@ int findPrefix() {
         cout (char(i+'a'));
         showTrie(currentNode)
     }
-}*/ 
-
-
-void isThereWord(string word) {
-    if(searchWord(word)) {
-        cout<<"si existe : "<<word<<" en el trie"<<endl;
-    } else {
-        cout<<"No Existe :P"<<endl;
-    }
-}
+}*/
 
 int main() {
     init();
-    /*int N;
-    cin >> N;
-    while (N--){
-        string words;
-        cin >> words;
-        insertWord(words);
-    }
-    cout << cont << endl;
-    return 0;*/
-
-    string word = "alan";
-    insertWord(word);
-    isThereWord(word);
-    word = "alanoca";   
-    insertWord(word);
-    isThereWord(word);
-    word = "alfredo";   
-    insertWord(word);
-    isThereWord(word);
+    insertWord("alan");
+    isThereWord("alan"); 
+    insertWord("alanoca");
+    isThereWord("alanoca");
+    insertWord("alfredo");
+    isThereWord("alfredo");
+    trieDelete("alan");
+    trieDelete("alanoca");
+    isThereWord("alan");
+    isThereWord("alanoca");
     return 0;
 }
