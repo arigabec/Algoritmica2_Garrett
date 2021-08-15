@@ -14,3 +14,10 @@ El árbol de Trie tiene algunas características:
 4. Si el número de caracteres es n, entonces el grado de salida de cada nodo es n, que también es una manifestación del espacio para el tiempo, que desperdicia mucho espacio.
 5. La complejidad de la búsqueda por inserción es O (n) y n es la longitud de la cadena.
 
+
+Los métodos funcionan de la siguiente manera:
+
+- init (): inicia el árbol con un nodo vacío.
+- insertWord(string word): añadimos una palabra, comenzando desde la raíz y bajando por la rama del nodo en el árbol correspondiente a cada letra de la palabra hasta que la - palabra se complete, y el último nodo se marqua como palabra clave, lo que indica que la palabra se ha insertado en el árbol.
+- searchWord(string word): buscamos una palabra, comenzando desde la raíz y atravesando el árbol hacia abajo en orden y, una vez que se completa el recorrido de palabra y el último nodo no está marcado como "clave", significa que el la palabra no existe. Si el último nodo está marcado, significa que la palabra existe.
+- trieDelete(string word): eliminamos una palabra, comenzando desde la raíz y atravesando el árbol hacia abajo en orden y, una vez que se completa el recorrido de palabra y el último nodo está marcado como "clave", se elimina esta marca de modo que la palabra queda eliminada del árbol.
