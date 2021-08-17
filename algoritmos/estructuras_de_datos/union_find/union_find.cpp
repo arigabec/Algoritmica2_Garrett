@@ -10,7 +10,7 @@ int parent[10000];
 int rango[10000];
 int n;
 
-void init() {
+void iniciar() {
     for(int i = 0;  i < 1000; i++) {
         padres[i] = i;
     }
@@ -26,6 +26,13 @@ int encontrarPadre(int v){
         return v;
     }
     return encontrarPadre(padres[v]);
+}
+
+void init() {
+    for(int i = 0;  i <= n; i++) {
+        padres[i] = i;
+        rango[i] = 0;
+    }
 }
 
 int find(int x) {
