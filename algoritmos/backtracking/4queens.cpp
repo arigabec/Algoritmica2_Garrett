@@ -18,7 +18,7 @@ int esValido(int tablero[][], int fila, int columna){
         col--;
     }
     //Comprobamos diagonales izq inferior
-   row = fila, col = columna;
+    row = fila, col = columna;
     while(row < 4 && col > 0 ){
         if(tablero[row][col] == 1){
             return false;
