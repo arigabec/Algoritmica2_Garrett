@@ -30,9 +30,7 @@ int solve(int posA, int posB) {
     
     
 
-int main()
-{
-
+int main(){
     wordA = "ACAAAAAAAAADASDASDAS";
     wordB = "ACASDASFASFADFASDASDASD";
     memset(dp,-1,sizeof(dp));
