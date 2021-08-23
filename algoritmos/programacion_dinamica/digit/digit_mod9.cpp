@@ -8,10 +8,6 @@ using namespace std;
 string number;
 int dp[20][2][10];
 
-/* 
-* Digit DP para contar los numeros 
-* donde la suma de los digitos sea un numero primo 
-*/ 
 int solve_dp(int pos, int mayor,int digito) {
     if(pos > number.size()) { // cuando la posicion exceda al numero dado
         return 0;
