@@ -1,5 +1,12 @@
 {
     "files.associations": {
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "problemagcpp": "cpp",
+        "*.tcc": "cpp",
+        "vector": "cpp",
+        "shared_mutex": "cpp",
+        "functional": "cpp",
+        "tuple": "cpp",
+        "typeinfo": "cpp"
     }
 }

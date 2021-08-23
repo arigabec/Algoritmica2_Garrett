@@ -1,12 +1,11 @@
+//SEGMENT TREE
+
 #include <bits/stdc++.h> 
-#define input freopen("in.txt", "r", stdin)
-#define output freopen("out.txt", "w", stdout)
 using namespace std;
 
 int numbers[]  = {1,2,3,4,5,6,7,8};
 
 struct node {
-    // crear una variable por query
     int maximo;
     int minimo;
 }segmentTree[1000000];
@@ -55,7 +54,12 @@ node query(int ini, int fin, int nodoActual, int i, int j) {
 }
 
 int main() {
-    init(0,3,0);
-    query(0,7,0,6,7);
+    int n;
+    cin >> n;
+    init(0, n, 0);
+    for(int i = 0; i < n; i++) {
+        
+        
+    }
     return 0;
-} 
+}

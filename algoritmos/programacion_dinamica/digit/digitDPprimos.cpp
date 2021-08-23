@@ -22,7 +22,7 @@ int solveDP(int pos, int mayor, int pares){
 
     //El numero tiene 2 pares?
     if(pos == number.size()){
-        if(pares == 2){
+        if(isPrime(pares)){
             return 1;
         } else {
             return 0;
@@ -38,18 +38,11 @@ int solveDP(int pos, int mayor, int pares){
         dp[pos][mayor][pares] = 0;
         for(int digito = 0; digito <= tope; digito++){
             if(digito == tope){
-                dp[pos][mayor][pares] += solveDP(pos + 1, true, pares + digito % 2 == 0); 
-            } else {
-                dp[pos][mayor][pares] += solveDP(pos + 1, false, pares + digito % 2 == 0);
-            }
-        }
-        /*for(int digito = 0; digito <= tope; digito++){
-            if(digito == tope){
                 dp[pos][mayor][pares] += solveDP(pos + 1, true, pares + digito); 
             } else {
                 dp[pos][mayor][pares] += solveDP(pos + 1, false, pares + digito);
             }
-        }*/
+        }
     }
     return dp[pos][mayor][pares] ;
 }

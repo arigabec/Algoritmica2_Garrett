@@ -5,8 +5,8 @@ using namespace std;
 
 int rows[9][9];
 int number, fila, columna;
-bool isValid(int row, int column, int numbER)
-{
+
+bool isValid(int row, int column, int numbER){
     for (int prevRow = 0; prevRow < 9; prevRow++)
     {
         for (int prevCol = 0; prevCol < 9; prevCol++)
@@ -20,19 +20,13 @@ bool isValid(int row, int column, int numbER)
     return true;
 }
 
-void solve(int row, int column, int numb)
-{
-
-    if (column == 9 && row == 9)
-    {
+void solve(int row, int column, int numb){
+    if (column == 9 && row == 9){
         return;
     }
-    for (int r = 0; r < 9; r++)
-    {
-        for (int c = 0; c < 9; c++)
-        {
-            if (isValid(r, c, numb))
-            {
+    for (int r = 0; r < 9; r++){
+        for (int c = 0; c < 9; c++){
+            if (isValid(r, c, numb)){
                 rows[r][c] = numb;
                 solve(r + 1, c + 1, numb);
             }
@@ -40,28 +34,23 @@ void solve(int row, int column, int numb)
     }
 }
 
-void generator()
-{
-
+void generator(){
     number = 1 + rand() % (9 + 1 - 1);
     fila = rand() % 9;
     columna = rand() % 9;
 }
 
-void generator2()
-{
+void generator2(){
     fila = rand() % 9;
     columna = rand() % 9;
 }
-int main()
-{
+
+int main(){
     srand(time(NULL));
     int counter = 0;
-    for (int k = 0; k < 81; k++)
-    {
+    for (int k = 0; k < 81; k++){
         generator();
-        if (isValid(fila, columna, number))
-        {
+        if (isValid(fila, columna, number)){
             rows[fila][columna] = number;
         }
         cout << fila << ":" << columna << ":" << number << endl;

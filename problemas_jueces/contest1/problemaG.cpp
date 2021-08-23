@@ -1,3 +1,5 @@
+//TRIE
+
 #include <bits/stdc++.h>
 using namespace std;
 int cont = 0;
@@ -60,16 +62,20 @@ bool trieDelete(string word){
 }
 
 int main() {
+    int P, S;
+    cin >> P >> S;
     init();
-    insertWord("alan");
-    isThereWord("alan"); 
-    insertWord("alanoca");
-    isThereWord("alanoca");
-    insertWord("alfredo");
-    isThereWord("alfredo");
-    trieDelete("alan");
-    trieDelete("alanoca");
-    isThereWord("alan");
-    isThereWord("alanoca");
+    while(P != 0 && S != 0){
+        while(P--){
+            string wordP;
+            cin >> wordP;
+            insertWord(wordP);
+        }
+        while(S--){
+            string wordS;
+            cin >> wordS;
+            insertWord(wordS);
+        }
+    }
     return 0;
 }
