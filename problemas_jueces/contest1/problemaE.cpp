@@ -2,7 +2,51 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-bool flag;
+string s[10010];
+
+bool check(string a, string b){
+    if(a.size() > b.size()){
+        return false;
+    }
+    for(int i = 0; i < a.size(); i++){
+        if(a[i] != b[i]){
+            return false;
+        } 
+    }
+    return true;
+}
+
+int main(){
+    int cases, n;
+    cin >> cases;
+    while(cases--){
+        cin >> n;
+        for(int i = 0; i < n; i++){
+            cin >> s[i];
+        }
+        sort(s, s+n);
+        bool flag = true;
+        for(int i = 0; i < n; i++){
+            if(check(s[i], s[i + 1])){
+                flag = false;
+                break;
+            }
+        }
+        if(flag){
+            cout << "YES" << endl;
+        } else {
+            cout << "NO" << endl;
+        }
+    }
+    return 0;
+}
+
+
+
+
+
+
+/*bool flag;
 
 struct node {
     char currentCharacter;       
@@ -72,4 +116,4 @@ int main() {
         del();
     }
     return 0;
-}
+}*/
