@@ -2,8 +2,49 @@
 
 #include <bits/stdc++.h> 
 using namespace std;
+int n, r, l, ans, cnt;
+char s[3005];
 
-int numbers[]  = {1,2,3,4,5,6,7,8};
+int main() {
+    
+    ans = cnt = r = l = 0;
+    cin >> n >> s;
+    for(int i = 0; i < n; i++) {
+        if(s[i] == '.' && r == 0){
+            cnt++;
+        }
+        if(s[i] == 'L') {
+            cnt = 0;
+            r = 0;
+        }
+        if(s[i] == 'R') {
+            ans += cnt;
+            cnt = 0;
+            r = 1;
+        }
+    }
+    if(cnt > 0){
+        ans += cnt;
+        cnt = 0;
+    }
+    r = l = 0;
+    for(int i = 0; i < n; i++) {
+        if(s[i] == 'R'){
+            r = 1;
+        }
+        if(s[i] == 'L') {
+            if(cnt % 2 == 1){
+                ans++;
+            }
+            cnt = 0;
+            r = 0;
+        }
+    }
+    cout << ans;
+    return 0;
+}
+
+/*int numbers[]  = {1,2,3,4,5,6,7,8};
 
 struct node {
     int maximo;
@@ -62,4 +103,4 @@ int main() {
         
     }
     return 0;
-}
+}*/
