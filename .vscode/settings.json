@@ -38,6 +38,8 @@
         "fstream": "cpp",
         "istream": "cpp",
         "sstream": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp"
     }
 }

@@ -10,11 +10,9 @@ struct node {
   int id;
 } a[100000];
 
-
 bool reverseSort(node node1,node node2){
   return node1.x > node2.x;
 }
-
 
 int main(){
     int n;
