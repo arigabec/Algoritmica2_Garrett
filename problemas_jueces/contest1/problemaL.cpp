@@ -10,7 +10,7 @@ int rango[20010];
 void init() {
     for(int i = 0;  i < 20010; i++) {
         parent[i] = i;
-        rango[i] = 1;
+        rango[i] = 0;
     }
 }
 
@@ -45,19 +45,17 @@ int enemyID(int x) {
 }
 
 int main() {
-    cin >> people;
-    while(people == 1) {
+    while(scanf("%d", &people) == 1) {
         init();
         int c, n, m;
-        cin >> c >> n >> m;
-        while (c && n && m == 3){
+        while (scanf("%d %d %d", &c, &n, &m) == 3){
             if(c == 0 && n == 0 && m == 0){
                 break;
             } 
             //setFriend()
             if(c == 1) {
                 if(find(n) == find(enemyID(m)) || find(m) == find(enemyID(n))){
-                    cout << "-1" << endl;
+                    puts("-1");
                 } else {
                     unionRango(n, m);
                     unionRango(enemyID(n), enemyID(m));
@@ -66,7 +64,7 @@ int main() {
             // setEnemy()
             } else if(c == 2) { 
                 if(find(n) == find(m) || find(enemyID(n)) == find(enemyID(m))){
-                    cout << "-1" << endl;
+                    puts("-1");
                 } else {
                     unionRango(n, enemyID(m));
                     unionRango(m, enemyID(n));
@@ -75,17 +73,17 @@ int main() {
             //areFriends()
             } else if(c == 3) {
                 if(find(n) == find(m) || find(enemyID(n)) == find(enemyID(m))){
-                    cout << "-1" << endl;
+                    puts("1");
                 } else {
-                    cout << "0" << endl;
+                    puts("0");
                 }
 
             //areEnemies()
             } else {
                 if(find(n) == find(enemyID(m)) || find(m) == find(enemyID(n))){
-                    cout << "1" << endl;
+                    puts("1");
                 } else {
-                    cout << "0" << endl;
+                    puts("0");
                 }
             }
         }
