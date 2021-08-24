@@ -37,6 +37,7 @@
         "ratio": "cpp",
         "fstream": "cpp",
         "istream": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "algorithm": "cpp"
     }
 }
