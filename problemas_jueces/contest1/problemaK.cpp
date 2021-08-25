@@ -1,15 +1,16 @@
 //UNION FIND
 
-#include <bits/stdc++.h> 
+#include <bits/stdc++.h>
 using namespace std;
-int parent[105];
-int rango[105];
-int n;
+#define p pair<int, char>
+
+int parent[200010];
+int rango[200010];
 
 void init() {
-    for(int i = 0;  i <= n; i++) {
+    for(int i = 0;  i < 20010; i++) {
         parent[i] = i;
-        rango[i] = 0;
+        rango[i] = 1;
     }
 }
 
@@ -19,72 +20,76 @@ int find(int x) {
     }
     else {
         parent[x] = find(parent[x]);
+        
         return parent[x];
     }
 }
 
-void unionRango(int x,int y) { 
+int unionRango(int x,int y) {
     int xRaiz = find(x);
     int yRaiz = find(y);
-    if(rango[xRaiz] > rango[yRaiz]) {
-        parent[yRaiz] = xRaiz;
-    } else {
-        parent[xRaiz] = yRaiz;
-        if(rango[xRaiz] == rango[yRaiz]) {
-            rango[yRaiz]++;
+    if(xRaiz != yRaiz){
+        if(rango[xRaiz] > rango[yRaiz]) {
+            parent[yRaiz] = xRaiz;
+            rango[xRaiz] += rango[yRaiz];
+        } else {
+            parent[xRaiz] = yRaiz;
+            rango[yRaiz] += rango[xRaiz];
         }
+        return 1;
     }
+    return 0;
 }
 
-float distance(pair <float, float> a, pair <float, float> b) {
-    float x = a.first - b.first;
-    float y = a.second - b.second;
-    return sqrt(x * x + y * y);
-}
-
-bool compare(pair <float, pair <int, int>> a, pair <float, pair<int, int>> b) {
-    return a.first < b.first;
-}
-
-int main() {
-    int cases;
-    float x,y;
-    cin >> cases;
-    while(cases--) {
-        cin >> n;
-        vector< pair <float, float>> points;
-        float matrix[n][n];
-        float visited[n], cost[n], prev[n];
-        for(int i = 0; i < n; i++){
-            cin >> x >> y;
-            points.push_back(make_pair(x,y));
-        }
+int main(){
+    int t;
+    cin >> t;
+    for(int i = 1; i <= t; i++){
+        string s;
+        cin >> s;
+        int q, x, y;
+        cin >> q;
         init();
-        vector<pair<float, pair<int, int>>> E;
-        E.clear();
-        vector<pair<float, pair<int, int>>> X;
-        X.clear();
-        for (int i = 0; i < n; i++) {
-            for (int j = i + 1; j < n; j++) {
-                E.push_back(make_pair(distance(points[i], points[j]), make_pair(i, j)));
+        vector<p> v;
+        for(int i = 1; i <= q; i++){
+            cin >> x >> y;
+            if(x == 2){
+            	v.push_back(p(y, s[y]));
+                s[y] = '#';
+            } else {
+                v.push_back(p(y, '0'));
             }
         }
-        sort(E.begin(), E.end(), compare);
- 
-        for (int i = 0; i < E.size(); i++) {
-            if (find(E[i].second.first) != find(E[i].second.second)) {
-                X.push_back(E[i]);
-                unionRango(E[i].second.first, E[i].second.second);
+        for(int i = 0; i < s.size() - 1; i++){
+            if(s[i] == '#'){
+                continue;
+            }
+            if(s[i] == s[i + 1]){
+                unionRango(i, i + 1);
             }
         }
-        float total = 0;
-        for (int i = 0; i < X.size(); i++){
-            total += X[i].first;
+        vector<int> result;
+        for(int i = v.size() - 1; i >= 0; i--){
+            int x = v[i].first;
+            char ch = v[i].second;
+            if(ch == '0'){
+                int y = find(x);
+                result.push_back(rango[y]);
+            } else {
+                s[x] = ch;
+                if(x + 1 < s.size() && s[x] == s[x + 1]){
+                    unionRango(x, x + 1);
+                }
+                if(x - 1 >= 0 && s[x] == s[x - 1]){
+                    unionRango(x, x - 1);
+                }
+            }
         }
-        printf("%.2f\n", total);
-        if(cases > 0){
-            cout << endl;
-        }   
+        reverse(result.begin(), result.end());
+        cout << "Case " << i << ":" << endl;
+        for(int i = 0; i < result.size(); i++){
+            cout << result[i] << endl;
+        }
     }
     return 0;
 }
