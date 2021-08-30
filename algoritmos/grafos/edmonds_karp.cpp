@@ -52,9 +52,9 @@ int main() {
     int nodes, aristas, nroCases = 1; 
     while(cin >> nodes && nodes){
         int s, t; 
-        cin >> s >> t;
+        cin >> s >> t >> aristas;
         memset(grafo, 0, sizeof(grafo));
-        for(int i = 0;i < aristas; i++){
+        for(int i = 0; i < aristas; i++){
             int from, to, capacity; 
             cin >> from >> to >> capacity;
             grafo[from][to] = capacity;          // camino capacidad
@@ -63,3 +63,17 @@ int main() {
         cout << maxFlow(s,t) << endl;
     }    
 }
+
+/*7
+8 10 11
+8 4 10
+8 9 2
+8 5 8
+4 6 10
+4 9 6
+5 9 1
+5 7 3
+6 10 5
+9 10 9
+7 9 7
+7 10 5*/
