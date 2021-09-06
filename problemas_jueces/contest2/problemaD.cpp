@@ -36,34 +36,3 @@ int main(){
     }
     return 0;
 }
-
-/*
-#include <bits/stdc++.h>
-#define N 32000
-unsigned  a[N];
-unsigned s[N];
-int main(){
-int i;
- a[1]=s[1]=1;
-for(i=2;i<N;i++){
-a[i]=a[i-1]+(int)log10((double)i)+1;
-s[i]=s[i-1]+a[i];
- }
-int n,m,j,len,k;
- scanf("%d",&m);
- while(m--)
- {
-scanf("%d",&n);
- j=1;
-   while(s[j]<n)
-         j++;   //Determine which group the nth position is in
-  k=n-s[j-1];//  The index value of the nth position in the jth group
-     len=0;
-      for(i=1;len<k;i++)
-        len+=(int)log10((double)i)+1;
-      int num=(i-1)/(int)pow((double)10,len-k)%10; 
-      printf("%d\n",num);
-     }
-     return 0;
- }
-*/

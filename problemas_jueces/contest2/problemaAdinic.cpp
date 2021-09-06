@@ -111,6 +111,7 @@ int main(){
             int from, to, capacity;
             cin >> from >> to >> capacity;
             addEdge(from, to, capacity);
+            addEdge(to, from, capacity);
         }
         cout << "Network " << cases++ << endl;
         cout << "The bandwidth is " << Dinic() << "." << endl << endl;

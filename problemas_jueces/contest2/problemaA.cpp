@@ -47,8 +47,8 @@ int main() {
         for(int i = 0; i < aristas; i++){
             int from, to, capacity; 
             cin >> from >> to >> capacity;
-            grafo[from][to] = capacity;          
-            grafo[to][from] = 0;               
+            grafo[from][to] += capacity;          
+            grafo[to][from] += capacity;               
         }
         cout << "Network " << cases++ << endl;
         cout << "The bandwidth is " << maxFlow(s, t) << "." << endl << endl;
