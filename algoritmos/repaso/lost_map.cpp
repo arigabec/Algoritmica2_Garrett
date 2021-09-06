@@ -103,6 +103,6 @@ int main(){
             k++;
         }
     }
-    kruskal(n, k);
+    cout << kruskal(n, k) << endl;;
     return 0;
 }

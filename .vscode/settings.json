@@ -44,6 +44,7 @@
         "array": "cpp",
         "charconv": "cpp",
         "utility": "cpp",
-        "chrono": "cpp"
+        "chrono": "cpp",
+        "ostream": "cpp"
     }
 }

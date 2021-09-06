@@ -38,9 +38,11 @@ int main(){
 /*6
 3 4 7 11 13 15
 7
-*/
 
-/*
+
+
+Primer mayor a X
+
 #include <bits/stdc++.h> 
 using namespace std; 
 int n, x;

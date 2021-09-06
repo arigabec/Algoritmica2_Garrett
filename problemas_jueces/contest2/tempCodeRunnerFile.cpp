@@ -51,7 +51,6 @@ int main() {
             grafo[to][from] = 0;               
         }
         cout << "Network " << cases++ << endl;
-        cout << "The bandwidth is " << maxFlow(s, t) << "." << endl << endl;
-    }
-    return 0;
+        cout << "The bandwidth is " << maxFlow(s, t) << "." << endl;
+    }    
 }

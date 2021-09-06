@@ -1,6 +1,4 @@
-#include <bits/stdc++.h> 
-#define input freopen("in.txt", "r", stdin)
-#define output freopen("out.txt", "w", stdout)
+#include <bits/stdc++.h>
 using namespace std; 
 #define MAX_N 101         
 
