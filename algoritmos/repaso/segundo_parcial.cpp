@@ -5,7 +5,6 @@ using namespace std;
 int parent[MAX_N];
 int rango[MAX_N];
 
-//n: nro vertices, m: nro aristas
 int n, m; 
 int numAristasArbol;
 
@@ -46,16 +45,11 @@ void unionRango(int x, int y) {
 struct Arista {
     int origen;
     int destino; 
-    double peso; 
+    double peso = 1; 
     Arista(){}
     //sobrecarga del operador < para ordenar las asristas
     //sort
     bool operator <(const Arista &a) const {
-        /*if(peso == a.peso){
-            return origen < a.origen;
-        } else {
-            return peso < a.peso;
-        }*/
         return peso < a.peso;
     }
 } aristas[MAX_N]; 
@@ -86,60 +80,24 @@ double kruskal(int nroNodos, int nroAristas) {
     return total;
 }
 
-double distancia(double pointX1, double pointY1, double pointX2, double pointY2){
-    // sqrt((x1-x2)^2 + (y1-y2)^2)
-    double x = pointX2 - pointX1;
-    double y = pointY2 - pointY1;
-    return sqrt(x*x + y*y); 
-}
-
 int main(){
     while(scanf("%d %d", &n, &m) != EOF) {
         for(int i = 0; i < m; i++) {
-            scanf("%d %d %lf", &aristas[i].origen, &aristas[i].destino, &aristas[i].peso);
+            scanf("%d %d", &aristas[i].origen, &aristas[i].destino);
         }
         printf("%.2lf\n", kruskal(n,m));
-        
-        // Imprimo el arbol de expasion minimo
-        /*for(int i = 0 ; i < numAristasArbol; i++) {
-            cout << MST[i].origen << " " << MST[i].destino << " " << MST[i].peso << endl;
-        }*/
     }
     return 0;
-
-    /*
-    10 15
-    0 1 20
-    0 2 33
-    0 3 47
-    1 2 20
-    2 3 19
-    1 7 30
-    2 6 54
-    3 4 30
-    7 6 15
-    6 4 29
-    7 8 47
-    6 9 87
-    4 5 11
-    5 9 90
-    8 9 30
-    */
-    
-    /*int cases; 
-    cin >> cases; 
-    while(cases--) {
-        cin >> n;
-        int nroVertice = 0; 
-        for(int i = 0; i < n - 1; i++) {
-            for(int j = i + 1; j < n; j++) {
-            aristas[nroVertice].origen = i;
-            aristas[nroVertice].destino = j;
-            aristas[nroVertice].peso = distancia(points[0][i], points[1][i], points[0][j], points[1][j]); 
-            nroVertice++;
-            }
-        }
-        double total = kruskal(n, nroVertice);
-        cout << total << endl;
-    }*/
 }
+
+/*
+4 8
+1 100 
+1 102
+1 103
+2 100
+2 105
+3 200
+3 203
+4 103
+*/

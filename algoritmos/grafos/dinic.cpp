@@ -24,9 +24,6 @@ int upTo[MAX_N];
 
 int idd = 0;
 
-//Dinicov algoritam za nalazenje maksimalnog protoka izmedju dva cvora u grafu
-//Slozenost: O(V^2 * E)
-
 inline bool BFS()
 {
     for (int i=1;i<=v;i++) dist[i] = -1;
