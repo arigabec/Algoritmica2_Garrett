@@ -78,16 +78,15 @@ void update(int inicio, int final, int nodoActual, int posicion, int valor ) {
         segmentTree[nodoActual].sum = segmentTree[nodoIzquierdo].sum + segmentTree[nodoDerecho].sum;
         segmentTree[nodoActual].max = max(segmentTree[nodoIzquierdo].max, segmentTree[nodoDerecho].max); 
         segmentTree[nodoActual].min = min(segmentTree[nodoIzquierdo].min, segmentTree[nodoDerecho].min);  
-
     }
 }
 
 int main() {
     cin>>n;
     for(int i = 0; i < n; i++) {
-        cin>>a[i];
+        cin >> a[i];
     }
-    init(0,n -1, 0);
+    init(0,n - 1, 0);
     int izquierda, derecha; 
     cin>> izquierda >> derecha; 
     cout << "La suma de " << izquierda << " y " << derecha << " es: "<<query(0,n-1,0,izquierda,derecha).sum << endl;
