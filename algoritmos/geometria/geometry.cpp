@@ -214,13 +214,13 @@ vector<Point> convexHull(vector<Point> &points) {
     // k = 5
     
     // Parte Superior
-
     for(int i = points.size()-2, t = k;i>=0; i--) {
         while( k > t && area(hulls[k-2],hulls[k-1],points[i])<= 0){
             k--;
         }
         hulls[k++] = points[i];
     }
+    
     // [1,2,7,8,9,6,3]
     // k = 7
     //  0 1 2 3 4 5 6
