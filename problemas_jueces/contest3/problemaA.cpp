@@ -1,6 +1,4 @@
 #include <bits/stdc++.h> 
-#define input freopen("in.txt", "r", stdin)
-#define output freopen("out.txt", "w", stdout)
 using namespace std; 
 
 struct Point{
@@ -38,6 +36,7 @@ Point operator /(const Point &a, double k) {
     return Point(a.x/k, a.y/k); 
 }
 
+// Sort Ordernar puntos 
 bool operator <(const Point &a, const Point &b) {
     if(a.x != b.x) {
         return a.x < b.x;
@@ -46,6 +45,7 @@ bool operator <(const Point &a, const Point &b) {
     }
 }
 
+// Sobrecarga del Operador Print
 ostream& operator<<(ostream& os, Point p) {
     return os << "Este es el Punto ===>("<< p.x << "," << p.y << ")";
 }
@@ -62,10 +62,12 @@ double cross(const Point &V, const Point &U) {
     return V.x * U.y - V.y * U.x;
 }
 
+// Get Area 
 double areaP(const Point &V, const Point &U) {
     return abs(cross(V,U));
 }
 
+// Area de 3 puntos 
 double area(const Point &A, const Point &B, const Point &C) {
     return cross(B - A, C - A); // 1
 }
@@ -74,6 +76,7 @@ double areaTriangulo(const Point &A, const Point &B, const Point &C) {
     return abs(area(A,B,C))/2.; 
 }
 
+//  Formula de heron 
 double areaHeron(double a, double b, double c) {
     double s = (a+b+c)/2;
     return sqrt(s*(s-a)*(s-b)*(s-c));
@@ -147,6 +150,17 @@ bool pointInConvex(const vector<Point> &polign, const Point &P) {
     return areasPositive == 0 || areasNegative == 0;
 }
 
+// Area de un Poligono 
+double areaPoligono(const vector<Point> &poligono) {
+    int nroPoints = poligono.size(); 
+    double areaTotal = 0; 
+    for(int i = 1; i < nroPoints - 1; i++) {
+        areaTotal += area(poligono[0],poligono[i],poligono[i+1]); 
+    }
+    return abs(areaTotal/2);
+}
+
+// Convex Hull 
 vector<Point> convexHull(vector<Point> &points) {
     sort(points.begin(),points.end()); // Ordenamos los puntos para encontrar el punto mas a la izquierda
     int k = 0; // k cuenta cuantos puntos tendra el convex hull
@@ -167,25 +181,23 @@ vector<Point> convexHull(vector<Point> &points) {
 }
 
 int main(){
-    int points, points2;
-    while(cin >> points){
-        vector<Point> poligono, poligono2;
-        for (int i = 0; i < points; i++){
-            int n, m;
-            cin >> n >> m;
-            poligono.push_back(Point(n,m));
-        }
-        poligono2 = convexHull(poligono);
-        cin >> points2;
-        for (int i = 0; i < points2; i++){
-            int a, b;
-            cin >> a >> b;
-            if (pointInConvex(poligono2, Point(a, b))){
-                cout << "inside" << endl;
+    int lines;
+    while(cin >> lines){
+        cout << "INTERSECTING LINES OUTPUT" << endl;
+        for (int i = 0; i < lines; i++){
+            int x1, y1, x2, y2, x3, y3, x4, y4;
+            cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3 >> x4 >> y4;
+            float px = lineIntersection(Point(x1, y1), Point(x2, y2), Point(x3, y3), Point(x4, y4)).x;
+            float py = lineIntersection(Point(x1, y1), Point(x2, y2), Point(x3, y3), Point(x4, y4)).y;
+            if(px == INFINITY && py == INFINITY || px == -INFINITY && py == -INFINITY){
+                cout << "NONE" << endl;
+            } else if (px != INFINITY && py != INFINITY) {
+                printf("POINTS %0.2lf %0.2lf \n", px, py);
             } else {
-                cout << "outside" << endl;
+                cout << "LINE" << endl;
             }
         }
     }
+    cout << "END OF OUTPUT" << endl;
     return 0;
 }
