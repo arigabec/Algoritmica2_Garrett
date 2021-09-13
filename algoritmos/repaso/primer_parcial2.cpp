@@ -7,7 +7,7 @@ int hijo[10000];
 
 int n;
 int m;
-map<int,string> jugadores;
+map<int,string> animales;
 map<string,int> posicion;
 
 void init() {
@@ -52,7 +52,7 @@ int main() {
         for(int i = 1; i <= n;i++) {
             string nombre;
             cin >> nombre;
-            jugadores[i] = nombre;
+            animales[i] = nombre;
             posicion[nombre] = i;
         }
     } 
