@@ -1,6 +1,7 @@
 #include <bits/stdc++.h> 
 using namespace std; 
 int n = 1024;
+int x;
 double A[1030];
 
 void init(){
@@ -14,33 +15,29 @@ void init(){
     sort(A, A + n);
 }
 
-bool f(int number, int x) {
-    return number > x;
+bool f(double number) {
+    return number >= x;
 }
 
-void bs(int x) {
+void bs() {
     int ini = 0;
     int fin = n - 1;
-    while(ini < fin) {
+    while(ini <= fin) {
         int mid = (ini + fin) / 2;
-        if(f(A[mid], x)) {
-            fin = mid - 1 ;
+        if(f(A[mid])) {
+            fin = mid - 1;
         } else {
-            ini = mid;
+            ini = mid + 1;
         }
     }
-    if(f(A[fin], x)) {
-        cout << A[fin] << endl;
-    } else {
-        cout << "No hay elementos mayores" << endl;
+    if(f(A[fin + 1])) {
+        cout << A[fin + 1] << endl;
     }
 }
 
 int main(){
-    int x;
-	init();
     while(scanf("%d", &x) == 1 && x){
-        bs(x);
+    	init();
+        bs();
     }
-    return 0;
 }
