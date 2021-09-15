@@ -64,7 +64,20 @@ int main() {
         }
         cin >> r;
         grafo[categorias][t] = r;        
-        grafo[t][categorias] = 0;         
+        grafo[t][categorias] = 0;
+        if(l != juguetes){
+            grafo[juguetes][t] = 1;
+            grafo[t][juguetes] = 0;
+        }
     }
     cout << maxFlow(s,t) << endl;
 }
+
+/*
+4 3 1
+2 1 2
+2 1 2
+1 3
+1 3
+2 1 2 1
+*/

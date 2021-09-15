@@ -235,12 +235,12 @@ double area2(const Point A, const Point B, const Point C) {
 
 int main() {
     int x1, y1, x2, y2, a1, a2;
-    while(cin>>x1>>y1>>x2>>y2>>a1>>a2) {
+    while(cin >> x1 >> y1 >> x2 >> y2 >> a1 >> a2) {
         Point atacante = Point(x1, y1);
         Point defensor = Point(x2, y2);
         Point puntoPaLaRecta = Point(a1,a2);
         double area = area2(atacante, puntoPaLaRecta, defensor);
-        if(area>EPS) {
+        if(area > EPS) {
             cout<<"true"<<endl;
         } else {
             cout<<"false"<<endl;
